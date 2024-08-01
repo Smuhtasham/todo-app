@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Deleted = () => {
+const Deleted = ({task,setTask}) => {
   return (
     <div>Deleted</div>
   )

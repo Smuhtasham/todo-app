@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Output from "./Output";
 import TaskInput from "./TaskInput";
 
 const Main = () => {
+
+  const [task,setTask]=useState([]);
+  console.log(task)
   return (
 
 
@@ -11,8 +14,8 @@ const Main = () => {
         <div className="w-[90%] m-auto flex flex-col items-center py-7 gap-6">
           <h3 className="font-bold text-2xl">Todo App</h3>
 
-          <TaskInput/>
-            <Output/>
+          <TaskInput setTask={setTask} task={task}/>
+            <Output task={task} setTask={setTask}/>
          
         </div>
       </div>
