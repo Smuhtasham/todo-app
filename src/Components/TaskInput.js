@@ -6,7 +6,7 @@ const TaskInput = () => {
   return (
     <div className="flex w-[35%]">
       <input
-        className="w-[85%] rounded-md p-2 "
+        className="w-[85%] rounded-md p-2 border-2 border-black"
         type="text"
         placeholder="Enter your task..."
       />
