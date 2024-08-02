@@ -5,7 +5,6 @@ import TaskInput from "./TaskInput";
 const Main = () => {
 
   const [task,setTask]=useState([]);
-  console.log(task)
   return (
 
 

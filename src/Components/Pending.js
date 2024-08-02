@@ -1,18 +1,39 @@
 import React from 'react'
 import { IoIosCheckbox } from "react-icons/io";
+import { MdDelete } from "react-icons/md";
 
 
-const Pending = ({task,setTask}) => {
+const Pending = ({task,setTask,setDeletedTask,setCompletedTask}) => {
 
+const pen="Pending";
+// const del="Deleted"
+// const com="Completed"
+const Delete=(id)=>{
 
+  const deleted=task.filter((val)=>val.id == id);
+  setDeletedTask(deleted);
+
+  const filtered = task.filter((val) => val.id !== id);
+  setTask(filtered); 
+}
+const Completed=(id)=>{
+
+  const completed =task.filter((val)=>val.id == id);
+  console.log(completed)
+  setCompletedTask(completed);
+
+  const filtered = task.filter((val) => val.id !== id);
+  setTask(filtered); 
+}
 
 
   return (
     <div>
-      {task.map((task)=>(
-        <div className='px-3 py-1 bg-slate-200 mt-2 mx-2 flex items-center'>
-         <span> <IoIosCheckbox /> </span>
-          <span className='pl-2'>{task.inputTask}</span>
+      {task.map((task,index)=>(
+        <div key={index}  className='px-3 py-1 bg-slate-200 mt-2 mx-2 flex items-center'>
+         <span> <IoIosCheckbox onClick={()=> Completed(task.id)} /> </span>
+          <span className='pl-2'>{task.status==pen && task.inputTask }</span>
+          <span><MdDelete className='' onClick={()=> Delete(task.id)} /></span>
           </div> 
         
       ))}

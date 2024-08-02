@@ -8,7 +8,7 @@ const TaskInput = ({task, setTask}) => {
   
 
   const submit=()=>{
-    setTask([...task , {inputTask,status:"Pending"} ])
+    setTask([...task , { id:task.length+1 ,inputTask,status:"Pending"} ])
   }
   return (
     <div className="flex w-[35%]">

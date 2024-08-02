@@ -4,6 +4,9 @@ import Completed from './Completed';
 import Deleted from './Deleted';
 
 const Output = ({task,setTask}) => {
+
+  const[deletedTask,setDeletedTask]= useState([]);
+  const[completedTask,setCompletedTask]= useState([]);
   const [toggle, setToggle] = useState("Pending");
 
 
@@ -16,9 +19,26 @@ const Output = ({task,setTask}) => {
               <div onClick={() => setToggle("Deleted")}>Deleted</div>
             </div>
             <div>
-          {toggle === "Pending" && <Pending  task={task} setTask={setTask} />}
-          {toggle === "Completed" && <Completed task={task} setTask={setTask} />}
-          {toggle === "Deleted" && <Deleted  task={task} setTask={setTask} />}
+          {toggle === "Pending" &&
+           <Pending 
+           task={task} 
+           setTask={setTask}
+          setDeletedTask={setDeletedTask}
+          setCompletedTask={setCompletedTask}
+            />}
+
+          {toggle === "Completed" && 
+          <Completed 
+          task={task} 
+          setTask={setTask} 
+          completedTask={completedTask}
+          />}
+
+          {toggle === "Deleted" &&
+           <Deleted
+            deletedTask={deletedTask} 
+             task={task} 
+             setTask={setTask} />}
         </div>
     </div>
     </>

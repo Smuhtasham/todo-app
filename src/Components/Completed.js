@@ -1,9 +1,20 @@
-import React from 'react'
+import React from "react";
 
-const Completed = ({task,setTask}) => {
+const Completed = ({ completedTask }) => {
+
+
+  console.log(completedTask)
   return (
-    <div>Completed</div>
-  )
-}
+    <div>
+      
+      {
+      completedTask.map((completedTask) => (
+        <div className="px-3 py-1 bg-slate-200 mt-2 mx-2 flex items-center">
+          <span className="pl-2">{completedTask.inputTask}</span>
+        </div>
+      ))}
+    </div>
+  );
+};
 
-export default Completed
+export default Completed;
