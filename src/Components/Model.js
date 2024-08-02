@@ -1,7 +1,6 @@
 import React from "react";
 import TaskInput from "./TaskInput";
 import Output from "./Output";
-import { isVisible } from "@testing-library/user-event/dist/utils";
 
 const Model = ({task,setTask,setModel,isVisible}) => {
 if(!isVisible) return null;
@@ -12,7 +11,7 @@ if(!isVisible) return null;
         <div className="w-[550px]">
           <div className="bg-white pl-6  rounded flex flex-col">
             <div className=" flex justify-between pr-2">
-              <div>Model</div>{" "}
+              <div></div>{" "}
               <div>
                 <button className="text-black text-lg" onClick={()=>setModel(false)}>X</button>
               </div>
