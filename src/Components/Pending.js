@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IoIosCheckbox } from "react-icons/io";
+import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
 
 const Pending = ({task,setTask,setDeletedTask,setCompletedTask}) => {
+
+
+  const [check,setCheak]=useState("false");
 
 const pen="Pending";
 // const del="Deleted"
@@ -31,7 +35,7 @@ const Completed=(id)=>{
     <div>
       {task.map((task,index)=>(
         <div key={index}  className='px-3 py-1 bg-slate-200 mt-2 mx-2 flex items-center'>
-         <span> <IoIosCheckbox onClick={()=> Completed(task.id)} /> </span>
+         <span><MdOutlineCheckBoxOutlineBlank onClick={()=> Completed(task.id)}/> </span>
           <span className='pl-2'>{task.status==pen && task.inputTask }</span>
           <span><MdDelete className='' onClick={()=> Delete(task.id)} /></span>
           </div> 
