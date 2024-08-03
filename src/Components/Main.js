@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import Output from "./Output";
-import TaskInput from "./TaskInput";
 import Model from "./Model";
 import Calender from "./Calender";
 import { GrAddCircle } from "react-icons/gr";
+import Todomodel from "./Todomodel";
+import TaskModel from "./TaskModel";
 
 const Main = () => {
   const [task, setTask] = useState([]);
-  // console.log(task)
   const [model, setModel] = useState(false);
+  const [todoModel, setTodoModel] = useState(false);
+  const [taskModel, setTaskModel] = useState(false);
+
 
   const pen = "Pending";
-  // const year = date.getFullYear();
   const months = [
     "January",
     "February",
@@ -52,7 +53,7 @@ const Main = () => {
                   <GrAddCircle
                     className="cursor-pointer"
                     size="2rem"
-                    onClick={() => setModel(true)}
+                    onClick={() => setTodoModel(true)}
                   />
                 </div>
               </div>
@@ -62,7 +63,8 @@ const Main = () => {
                     <div
                       key={index}
                       className={`px-3 py-1 bg-slate-500 mt-2 mx-2 flex items-center ${
-                        task.status == pen && task.date == ""
+                         task.date === undefined 
+                        
                           ? `bg-slate-500`
                           : `hidden`
                       }`}
@@ -92,9 +94,7 @@ const Main = () => {
                   <div
                     key={index}
                     className={`w-[100%] px-1 flex flex-wrap  justify-between ${
-                      task.status == pen && task.date !== ""
-                        ? `bg-slate-500`
-                        : `hidden`
+                      task.date !== "" ? `bg-slate-500` : `hidden`
                     }`}
                   >
                     {" "}
@@ -128,11 +128,30 @@ const Main = () => {
 
           <div className="flex flex-col  w-[70%] min-h-[90vh] bg-gray-900 text-white">
             <div>
-              <Calender setModel={setModel} task={task} />
+              <Calender
+                setTaskModel={setTaskModel}
+                task={task}
+                isVisible={taskModel}
+              />
             </div>
           </div>
         </div>
       </div>
+
+
+      <Todomodel
+        task={task}
+        setTask={setTask}
+        isVisible={todoModel}
+        setTodoModel={setTodoModel}
+      />
+
+      <TaskModel
+        task={task}
+        setTask={setTask}
+        isVisible={taskModel}
+        setTaskModel={setTaskModel}
+      />
 
       <Model
         task={task}
@@ -140,6 +159,7 @@ const Main = () => {
         isVisible={model}
         setModel={setModel}
       />
+      
     </>
   );
 };
