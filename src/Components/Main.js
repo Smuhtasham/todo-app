@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Model from "./Model";
 import Calender from "./Calender";
 import { GrAddCircle } from "react-icons/gr";
@@ -94,7 +94,7 @@ const Main = () => {
                   <div
                     key={index}
                     className={`w-[100%] px-1 flex flex-wrap  justify-between ${
-                      task.date !== "" ? `bg-slate-500` : `hidden`
+                     task.data !== "" && task.date !== undefined ? `bg-slate-500` : `hidden`
                     }`}
                   >
                     {" "}

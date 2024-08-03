@@ -12,7 +12,7 @@ const Output = ({task,setTask}) => {
 
   return (
     <>
-     <div className="flex flex-col h-[398px] w-[90%] bg-white rounded-lg">
+     <div className="flex flex-col h-[398px] w-[90%] bg-slate-600 rounded-lg">
             <div className='flex  pl-5 pr-5 justify-between pt-2 border-b-2 cursor-pointer'>
               <div  onClick={() => setToggle("Pending")}>Pending</div>
               <div onClick={() => setToggle("Completed")}>Completed</div>

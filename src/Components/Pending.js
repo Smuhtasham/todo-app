@@ -30,7 +30,7 @@ const Pending = ({ task, setTask, setDeletedTask, setCompletedTask }) => {
       {task.map((task, index) => (
         <div
           key={index}
-          className="px-3 py-1 bg-slate-200 mt-2 mx-2 flex justify-between flex-wrap"
+          className="px-3 py-1 bg-slate-200 text-black mt-2 mx-2 flex justify-between flex-wrap"
         >
           <div className="flex items-center">
             <span>
