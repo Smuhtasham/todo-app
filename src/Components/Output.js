@@ -3,7 +3,7 @@ import Pending from './Pending';
 import Completed from './Completed';
 import Deleted from './Deleted';
 
-const Output = ({task,setTask}) => {
+const Output = ({task,setTask, filter}) => {
 
   const[deletedTask,setDeletedTask]= useState([]);
   const[completedTask,setCompletedTask]= useState([]);
@@ -23,6 +23,7 @@ const Output = ({task,setTask}) => {
            <Pending 
            task={task} 
            setTask={setTask}
+           filter={filter}
           setDeletedTask={setDeletedTask}
           setCompletedTask={setCompletedTask}
             />}

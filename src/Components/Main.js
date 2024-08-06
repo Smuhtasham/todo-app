@@ -7,6 +7,7 @@ import TaskModel from "./TaskModel";
 
 const Main = () => {
   const [task, setTask] = useState([]);
+  const [filter, setFilter] = useState(Date);
   const [model, setModel] = useState(false);
   const [todoModel, setTodoModel] = useState(false);
   const [taskModel, setTaskModel] = useState(false);
@@ -132,6 +133,7 @@ const Main = () => {
                 setTaskModel={setTaskModel}
                 task={task}
                 isVisible={taskModel}
+                setFilter={setFilter}
               />
             </div>
           </div>
@@ -148,6 +150,7 @@ const Main = () => {
 
       <TaskModel
         task={task}
+        filter={filter}
         setTask={setTask}
         isVisible={taskModel}
         setTaskModel={setTaskModel}

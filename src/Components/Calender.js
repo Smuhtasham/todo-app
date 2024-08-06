@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Calender = ({ task, setTaskModel }) => {
+const Calender = ({ task, setTaskModel,setFilter }) => {
 
   const [currentDate, setCurrentDate] = useState(new Date());
   const [days, setDays] = useState([]);
@@ -100,7 +100,9 @@ const Calender = ({ task, setTaskModel }) => {
                   ? 'bg-red-400'
                   : 'bg-transparent'
               } ${ g == date && "border border-slate-100" } `}
-              onClick={() => setTaskModel(true)}
+              onClick={()=>{ setTaskModel(true)
+                setFilter(date)
+              }}
             >
               {date}
             </div>

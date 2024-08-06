@@ -1,7 +1,7 @@
 import React from 'react'
 import Output from './Output'
 
-const TaskModel = ({task,setTask,setTaskModel,isVisible}) => {
+const TaskModel = ({task,setTask,setTaskModel,isVisible,filter}) => {
     if(!isVisible) return null;
   return (
     <>
@@ -14,7 +14,7 @@ const TaskModel = ({task,setTask,setTaskModel,isVisible}) => {
                 <button className=" text-lg" onClick={()=>setTaskModel(false)}>X</button>
               </div>
             </div>
-            <div className=" "><Output setTask={setTask} task={task}/></div>
+            <div className=" "><Output setTask={setTask} task={task} filter={filter}/></div>
           </div>
         </div>
     </div>
