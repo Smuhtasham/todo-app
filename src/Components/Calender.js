@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-const Calender = ({ task, setTaskModel,setFilter }) => {
-
+const Calendar = ({ task, setTaskModel, setFilter }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [days, setDays] = useState([]);
 
   useEffect(() => {
     generateCalendar(currentDate);
   }, [currentDate]);
-
 
   const highlightedDates = task.map(task => new Date(task.date).getDate());
   
@@ -23,10 +21,10 @@ const Calender = ({ task, setTaskModel,setFilter }) => {
 
     let daysArray = [];
     for (let i = 0; i < firstDayOfMonth; i++) {
-      daysArray.push("");
+      daysArray.push(null);
     }
     for (let i = 1; i <= daysInMonth; i++) {
-      daysArray.push(i);
+      daysArray.push(new Date(year, month, i));
     }
     setDays(daysArray);
   };
@@ -62,6 +60,7 @@ const Calender = ({ task, setTaskModel,setFilter }) => {
       new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)
     );
   };
+console.log({days})
   return (
     <>
       <h1 className="font-bold p-3 mb-4">CALENDAR</h1>
@@ -95,16 +94,19 @@ const Calender = ({ task, setTaskModel,setFilter }) => {
           {days.map((date, i) => (
             <div
               key={i}
-              className={` h-8 mr-3 flex items-center justify-center rounded-full cursor-pointer   ${
-                highlightedDates.includes(date)
+              className={`h-8 mr-3 flex items-center justify-center rounded-full cursor-pointer ${
+                date && highlightedDates.includes(date.getDate())
                   ? 'bg-red-400'
                   : 'bg-transparent'
-              } ${ g == date && "border border-slate-100" } `}
-              onClick={()=>{ setTaskModel(true)
-                setFilter(date)
+              } ${date && g === date.getDate() ? "border border-slate-100" : ""}`}
+              onClick={() => {
+                if (date) {
+                  setTaskModel(true);
+                  setFilter(date);
+                }
               }}
             >
-              {date}
+              {date ? date.getDate() : ""}
             </div>
           ))}
         </div>
@@ -113,4 +115,4 @@ const Calender = ({ task, setTaskModel,setFilter }) => {
   );
 };
 
-export default Calender;
+export default Calendar;

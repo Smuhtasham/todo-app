@@ -7,9 +7,12 @@ const TaskInput = ({ task, setTask, setModel }) => {
 
   const submit = () => {
     setModel(false)
+    const [year, month, day] = date.split('-').map(Number);
+    const [hours, minutes] = time.split(':').map(Number);
+    const timeDate = new Date(year, month - 1, day, hours, minutes);
     setTask([
       ...task,
-      { id: task.length + 1, status: "Pending", inputTask, time, date },
+      { id: task.length + 1, status: "Pending", inputTask, time, date, timeDate },
     ]);
 
     setInputTask("");
